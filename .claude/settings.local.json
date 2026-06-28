@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(proxy-switch 日本-优化 *)",
+      "Bash(systemctl status *)",
+      "Bash(sudo systemctl *)"
+    ]
+  }
+}
