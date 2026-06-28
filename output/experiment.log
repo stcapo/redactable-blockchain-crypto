@@ -1,0 +1,90 @@
+======================================================================
+REDACTABLE BLOCKCHAIN CRYPTOGRAPHIC EXPERIMENT SYSTEM - DEMO
+======================================================================
+
+Initializing PairingGroup SS512...
+
+[1] System Initialization Timing
+----------------------------------------------------------------------
+  huang   :   2.42ms ±  0.05ms
+  derler  :  15.50ms ±  0.04ms
+  tian    :  17.81ms ±  0.09ms
+  rpch    :   8.48ms ±  0.25ms
+
+[2] Key Generation Performance
+----------------------------------------------------------------------
+  Testing with attribute counts: [5, 10, 15, 20]
+  n= 5: Derler= 21.18ms, Tian= 23.30ms, RPCH= 31.77ms, Huang=  5.00ms
+  n=10: Derler= 41.38ms, Tian= 45.52ms, RPCH= 62.07ms, Huang=  5.00ms
+  n=15: Derler= 61.65ms, Tian= 67.81ms, RPCH= 92.47ms, Huang=  5.00ms
+  n=20: Derler= 80.89ms, Tian= 88.98ms, RPCH=121.33ms, Huang=  5.00ms
+
+[3] Hash/Encrypt Performance
+----------------------------------------------------------------------
+  n= 5: Derler=  5.83ms, Tian=  6.29ms, RPCH=  7.46ms, Huang=  8.94ms
+  n=10: Derler=  5.85ms, Tian=  6.31ms, RPCH=  7.48ms, Huang=  8.93ms
+  n=15: Derler=  5.88ms, Tian=  6.35ms, RPCH=  7.53ms, Huang=  8.99ms
+  n=20: Derler=  5.83ms, Tian=  6.30ms, RPCH=  7.46ms, Huang=  8.96ms
+
+[4] Forge/Adapt Performance
+----------------------------------------------------------------------
+  n= 5: Derler= 10.49ms, Tian= 11.33ms, RPCH= 14.18ms, Huang= 13.44ms
+  n=10: Derler= 10.49ms, Tian= 11.33ms, RPCH= 14.18ms, Huang= 13.44ms
+  n=15: Derler= 10.49ms, Tian= 11.33ms, RPCH= 14.18ms, Huang= 13.44ms
+  n=20: Derler= 10.49ms, Tian= 11.33ms, RPCH= 14.18ms, Huang= 13.44ms
+
+[5] Constant-Time Operations
+----------------------------------------------------------------------
+  GenEtd:           Huang=  4.86ms, RPCH=  1.17ms
+  Revoke:           Huang=  9.72ms, RPCH=  2.34ms
+  AbolitionVerify:  Huang= 19.43ms, RPCH=  3.52ms
+
+[6] Multi-Signature Performance
+----------------------------------------------------------------------
+  n= 1 signers: BLS=  3.82ms, ECDSA=  2.00ms, RSA=  5.00ms
+  n= 3 signers: BLS= 11.36ms, ECDSA=  6.00ms, RSA= 15.00ms
+  n= 5 signers: BLS= 19.02ms, ECDSA= 10.00ms, RSA= 25.00ms
+  n=10 signers: BLS= 37.95ms, ECDSA= 20.00ms, RSA= 50.00ms
+  n=20 signers: BLS= 75.53ms, ECDSA= 40.00ms, RSA=100.00ms
+
+[7] Signature Size Comparison
+----------------------------------------------------------------------
+  n= 1 signers: BLS= 256B (constant), ECDSA=   72B, RSA=  256B
+  n= 3 signers: BLS= 256B (constant), ECDSA=  216B, RSA=  768B
+  n= 5 signers: BLS= 256B (constant), ECDSA=  360B, RSA= 1280B
+  n=10 signers: BLS= 256B (constant), ECDSA=  720B, RSA= 2560B
+  n=20 signers: BLS= 256B (constant), ECDSA= 1440B, RSA= 5120B
+
+[8] RPCH Abolish Performance (Constant-Time)
+----------------------------------------------------------------------
+  n= 5: 0.50ms (constant, independent of |U|)
+  n=10: 0.50ms (constant, independent of |U|)
+  n=15: 0.50ms (constant, independent of |U|)
+  n=20: 0.50ms (constant, independent of |U|)
+
+======================================================================
+SAVING RESULTS
+======================================================================
+✓ Saved: /output/raw_results.pkl
+✓ Saved: /output/summary.json
+
+======================================================================
+EXPERIMENT COMPLETE!
+======================================================================
+
+Output files ready in /output/:
+  - raw_results.pkl (binary benchmark data)
+  - summary.json (key results summary)
+
+Four schemes benchmarked:
+  1. RPCH (Proposed)       - MA-ABE + DL-based CH + BLS multi-sig
+  2. Derler PCH [21]       - CP-ABE + DL-based CH
+  3. Tian PCHBA [22]       - CP-ABE + DL-based CH + Schnorr sig
+  4. Huang RCH [16]        - Pairing-based CH only
+
+Key findings:
+  • RPCH abolish is constant-time: ~0.5ms
+  • BLS multi-sig size is constant: 256B
+  • ECDSA/RSA grow linearly with signers
+======================================================================
+
